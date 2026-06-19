@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hours Confirmation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(24px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity:0; }
+    to   { opacity:1; }
+  }
+  @keyframes hexPulse {
+    0%,100% { filter: drop-shadow(0 0 10px rgba(208,107,67,0.25)); }
+    50%      { filter: drop-shadow(0 0 22px rgba(208,107,67,0.5)); }
+  }
+  @keyframes popIn {
+    from { opacity:0; transform:scale(.8); }
+    to   { opacity:1; transform:scale(1); }
+  }
+  @keyframes slideDown {
+    from { opacity:0; transform:translateY(-20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes hexDraw {
+    from { stroke-dashoffset: 600; opacity:0; }
+    to   { stroke-dashoffset: 0; opacity:0.6; }
+  }
+  @keyframes hexScale {
+    0%   { transform: scale(0.5); opacity:0; }
+    60%  { transform: scale(1.06); opacity:1; }
+    100% { transform: scale(1); opacity:1; }
+  }
+  @keyframes countUp {
+    from { opacity:0; transform:translateY(12px) scale(0.85); }
+    to   { opacity:1; transform:translateY(0) scale(1); }
+  }
+  @keyframes barGrow {
+    from { width:0; }
+    to   { width:36px; }
+  }
+  @keyframes chipFade {
+    from { opacity:0; transform:scale(0.9); }
+    to   { opacity:1; transform:scale(1); }
+  }
+  @keyframes watermarkSpin {
+    from { transform:rotate(0deg); opacity:0; }
+    to   { transform:rotate(15deg); opacity:0.08; }
+  }
+  @keyframes btnReveal {
+    from { opacity:0; transform:translateY(10px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes logoSlide {
+    from { opacity:0; transform:translateX(-12px); }
+    to   { opacity:1; transform:translateX(0); }
+  }
+  @keyframes footerFade {
+    from { opacity:0; }
+    to   { opacity:1; }
+  }
+  @keyframes greetingSlide {
+    from { opacity:0; transform:translateX(-10px); }
+    to   { opacity:1; transform:translateX(0); }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin:0;
+    padding:40px 16px;
+    background:#f5efe6;
+    font-family:'DM Sans',sans-serif;
+    animation: fadeIn .4s ease both;
+  }
+
+  .card {
+    animation: fadeUp .65s cubic-bezier(0.22,1,0.36,1) both;
+  }
+
+  .hex-svg {
+    animation: hexPulse 3s ease-in-out infinite;
+  }
+
+  .anim-logo {
+    animation: logoSlide .6s cubic-bezier(0.22,1,0.36,1) .3s both;
+  }
+  .anim-heading {
+    animation: slideDown .6s cubic-bezier(0.22,1,0.36,1) .45s both;
+  }
+  .anim-bar {
+    animation: barGrow .5s ease .7s both;
+  }
+  .anim-greeting {
+    animation: greetingSlide .6s cubic-bezier(0.22,1,0.36,1) .75s both;
+  }
+  .anim-chip {
+    animation: chipFade .5s cubic-bezier(0.34,1.56,0.64,1) .9s both;
+  }
+  .anim-hex {
+    animation: hexScale .7s cubic-bezier(0.34,1.4,0.64,1) 1.05s both, hexPulse 3s ease-in-out 2s infinite;
+  }
+  .anim-divider {
+    animation: fadeIn .4s ease 1.3s both;
+  }
+  .anim-btn-approve {
+    animation: btnReveal .5s cubic-bezier(0.34,1.56,0.64,1) 1.4s both;
+  }
+  .anim-btn-revise {
+    animation: btnReveal .5s cubic-bezier(0.34,1.56,0.64,1) 1.55s both;
+  }
+  .anim-contact {
+    animation: fadeIn .5s ease 1.7s both;
+  }
+  .anim-footer {
+    animation: footerFade .5s ease 1.8s both;
+  }
+  .anim-watermark {
+    animation: watermarkSpin .8s cubic-bezier(0.22,1,0.36,1) .2s both;
+  }
+  .anim-hex-wire {
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    animation: hexDraw 1s ease 1.05s both;
+  }
+
+  .btn-approve {
+    display:inline-block;
+    background:linear-gradient(135deg,#d06b43,#b85530);
+    color:#fff;
+    text-decoration:none;
+    padding:14px 32px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:0.08em;
+    box-shadow:0 4px 18px rgba(208,107,67,0.35);
+    border:none;
+    cursor:pointer;
+    font-family:'DM Sans',sans-serif;
+    transition:all .2s ease;
+  }
+  .btn-approve:hover {
+    background:linear-gradient(135deg,#c05a30,#a04020);
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(208,107,67,0.45);
+  }
+
+  .btn-revise {
+    display:inline-block;
+    background:#fff;
+    color:#633841;
+    border:1.5px solid #e4d4b8;
+    text-decoration:none;
+    padding:14px 32px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:0.08em;
+    cursor:pointer;
+    font-family:'DM Sans',sans-serif;
+    transition:all .2s ease;
+  }
+  .btn-revise:hover {
+    background:#f5efe6;
+    border-color:#c8a878;
+    transform:translateY(-2px);
+  }
+
+  .btn-submit {
+    margin-top:12px;
+    display:inline-block;
+    background:#633841;
+    color:#fff;
+    border:none;
+    border-radius:50px;
+    padding:12px 28px;
+    font-family:'DM Sans',sans-serif;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:0.1em;
+    cursor:pointer;
+    transition:all .2s ease;
+  }
+  .btn-submit:hover {
+    background:#8b4a36;
+    transform:translateY(-1px);
+  }
+
+  .btn-cancel {
+    display:block;
+    margin:10px auto 0;
+    background:none;
+    border:none;
+    font-size:11px;
+    color:#a0927c;
+    cursor:pointer;
+    font-family:'DM Sans',sans-serif;
+  }
+
+  .textarea-field {
+    width:100%;
+    border:1.5px solid #e4d4b8;
+    border-radius:14px;
+    padding:12px 16px;
+    font-family:'DM Sans',sans-serif;
+    font-size:13px;
+    color:#633841;
+    resize:none;
+    outline:none;
+    background:#fdfaf6;
+  }
+  .textarea-field:focus { border-color:#c05a30; }
+
+  .status-badge {
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 28px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:0.06em;
+    animation:popIn .4s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  .badge-approved {
+    background:linear-gradient(135deg,#d06b43,#b85530);
+    color:#fff;
+  }
+  .badge-revision {
+    background:#f5efe6;
+    color:#633841;
+    border:1.5px solid #e4d4b8;
+  }
+
+  #state-approved,
+  #state-revision { display:none; }
+</style>
+</head>
+<body>
+
+<div id="meta" data-task-id="" style="display:none;"></div>
+
+<div class="card" style="max-width:500px;margin:auto;background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 8px 48px rgba(99,56,65,0.10);">
+
+  <!-- Header -->
+  <div style="background:linear-gradient(135deg,#633841 0%,#8b4a36 100%);padding:36px 36px 28px;position:relative;overflow:hidden;">
+
+    <!-- Hex watermark -->
+    <svg class="anim-watermark" style="position:absolute;right:-28px;top:-28px;" width="160" height="160" viewBox="0 0 160 160">
+      <polygon points="80,8 148,44 148,116 80,152 12,116 12,44" fill="none" stroke="#fff" stroke-width="2"/>
+    </svg>
+
+    <!-- Logo mark -->
+    <div class="anim-logo" style="display:flex;align-items:center;gap:12px;margin-bottom:22px;">
+      <svg width="36" height="36" viewBox="0 0 36 36">
+        <defs>
+          <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e8845a"/>
+            <stop offset="100%" stop-color="#c05a30"/>
+          </linearGradient>
+        </defs>
+        <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="url(#hg)"/>
+        <polygon points="18,11 24,14.5 18,18 12,14.5" fill="#4a1f10" opacity="0.85"/>
+        <polygon points="12,14.5 18,18 18,25 12,21.5" fill="#3a1508" opacity="0.9"/>
+        <polygon points="18,18 24,14.5 24,21.5 18,25" fill="#502010" opacity="0.85"/>
+      </svg>
+      <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#e4d4b8;font-weight:500;">Hours Confirmation</div>
+    </div>
+
+    <div class="anim-heading" style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#fff;line-height:1.15;letter-spacing:-0.01em;">
+      Weekly Review
+    </div>
+    <div class="anim-bar" style="height:2px;background:#d06b43;margin-top:14px;border-radius:2px;"></div>
+  </div>
+
+  <!-- Body -->
+  <div style="padding:36px 36px 28px;">
+
+    <!-- Greeting -->
+    <p class="anim-greeting" style="margin:0 0 22px;font-size:15px;color:#633841;font-weight:300;line-height:1.7;border-left:3px solid #e4d4b8;padding-left:14px;">
+      Hi <strong id="employee-name" style="font-weight:500;">Employee</strong>, please review your logged days for the selected payroll cycle and confirm below.
+    </p>
+
+    <!-- Period chip -->
+    <div class="anim-chip" style="text-align:center;margin-bottom:28px;">
+      <span id="period-range" style="display:inline-block;background:#f5efe6;border:1px solid #e4d4b8;border-radius:40px;padding:6px 18px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#a0927c;font-weight:500;">
+        Payroll Period
+      </span>
+    </div>
+
+    <!-- Hexagon SVG -->
+    <div style="text-align:center;margin:0 0 32px;">
+      <svg class="anim-hex" width="180" height="200" viewBox="0 0 180 200" style="display:inline-block;overflow:visible;">
+        <defs>
+          <linearGradient id="hexMain" x1="20%" y1="0%" x2="80%" y2="100%">
+            <stop offset="0%" stop-color="#e8845a"/>
+            <stop offset="100%" stop-color="#c05a30"/>
+          </linearGradient>
+        </defs>
+        <!-- animated dashed wireframe -->
+        <polygon class="anim-hex-wire" points="90,6 168,48 168,152 90,194 12,152 12,48" fill="none" stroke="#e4d4b8" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <!-- main shape -->
+        <path d="M90,22 Q90,22 130,44 Q154,57 154,100 Q154,143 130,156 Q110,168 90,178 Q70,168 50,156 Q26,143 26,100 Q26,57 50,44 Q70,22 90,22Z" fill="url(#hexMain)"/>
+        <!-- highlight -->
+        <path d="M90,22 Q70,22 50,44 Q26,57 26,80" fill="none" stroke="#f0b888" stroke-width="2.5" stroke-linecap="round" opacity="0.45"/>
+        <!-- number -->
+        <text id="days-count" x="90" y="90" text-anchor="middle" dominant-baseline="middle" font-family="'Cormorant Garamond', serif" font-size="72" font-weight="600" fill="#fff" letter-spacing="-2">0</text>
+        <text x="90" y="148" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="11" font-weight="400" fill="#fff" letter-spacing="2" opacity="0.75">DAYS</text>
+      </svg>
+    </div>
+
+    <!-- Divider -->
+    <div class="anim-divider" style="border-top:1px solid #f0e8dc;margin-bottom:28px;"></div>
+
+    <!-- STATE: Default -->
+    <div id="state-default" style="text-align:center;">
+      <button class="btn-approve anim-btn-approve" onclick="handleApprove()">Approve</button>
+      <button class="btn-revise anim-btn-revise" onclick="handleRevise()" style="margin-left:10px;">Request Revision</button>
+    </div>
+
+    <!-- STATE: Approved -->
+    <div id="state-approved" style="text-align:center;">
+      <div class="status-badge badge-approved">✓ Hours Approved</div>
+      <p style="margin:16px 0 0;font-size:12px;color:#a0927c;">Your confirmation has been recorded.</p>
+    </div>
+
+    <!-- STATE: Revision -->
+    <div id="state-revision">
+      <p style="margin:0 0 10px;font-size:13px;color:#633841;font-weight:500;">What needs to be corrected?</p>
+      <textarea id="revision-note" class="textarea-field" rows="3" placeholder="Describe the discrepancy..."></textarea>
+      <div style="text-align:center;">
+        <button class="btn-submit" onclick="handleSubmitRevision()">Submit Request</button>
+        <button class="btn-cancel" onclick="handleCancel()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <p class="anim-contact" style="margin:24px 0 0;font-size:11px;color:#c0b0a0;text-align:center;letter-spacing:0.05em;">Crux Design Build</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="anim-footer" style="background:#f5efe6;border-top:1px solid #e4d4b8;padding:16px 36px;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#b0a090;">Two-Week Summary</span>
+    <svg width="22" height="22" viewBox="0 0 36 36">
+      <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="#e4d4b8"/>
+      <polygon points="18,11 24,14.5 18,18 12,14.5" fill="#c09070" opacity="0.7"/>
+      <polygon points="12,14.5 18,18 18,25 12,21.5" fill="#a07050" opacity="0.7"/>
+      <polygon points="18,18 24,14.5 24,21.5 18,25" fill="#b08060" opacity="0.7"/>
+    </svg>
+  </div>
+
+</div>
+
+<script>
+  var WEBHOOK = 'https://hook.us2.make.com/dgrfnso4s2exfq8z31ie6qch7n1y3p01';
+
+ var rawQuery = window.location.search;
+
+/*
+  Fix unencoded Make.com URL parameters
+*/
+rawQuery = rawQuery.replace(/\+/g, '%20');
+
+var params = new URLSearchParams(rawQuery);
+
+function safeParam(key, fallback) {
+
+  var value = params.get(key);
+
+  if (!value || value === 'null') {
+    return fallback;
+  }
+
+  try {
+    return decodeURIComponent(value);
+  } catch (e) {
+    return value;
+  }
+}
+
+var employeeName = safeParam('name', 'Employee');
+var days         = safeParam('days', '14');
+var taskId       = safeParam('task', '');
+var period       = safeParam('period', 'Payroll Period');
+
+document.getElementById('employee-name').textContent = employeeName;
+document.getElementById('period-range').innerText    = period;
+document.getElementById('meta').setAttribute('data-task-id', taskId);
+
+  /* Count-up animation for the days number */
+  var target = parseInt(days, 10) || 0;
+  var current = 0;
+  var daysEl = document.getElementById('days-count');
+  var duration = 900;
+  var startTime = null;
+
+  function animateCount(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var elapsed = timestamp - startTime;
+    var progress = Math.min(elapsed / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    current = Math.round(eased * target);
+    daysEl.textContent = current;
+    if (progress < 1) requestAnimationFrame(animateCount);
+  }
+
+  /* Start count-up after hex appears */
+  setTimeout(function() {
+    requestAnimationFrame(animateCount);
+  }, 1150);
+
+  function show(id) {
+    ['state-default','state-approved','state-revision'].forEach(function(s){
+      document.getElementById(s).style.display = 'none';
+    });
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function handleApprove() {
+    fetch(WEBHOOK
+      + '?status=approved'
+      + '&task_id='    + encodeURIComponent(taskId)
+      + '&employee='   + encodeURIComponent(employeeName)
+      + '&days='       + encodeURIComponent(days)
+      + '&period='     + encodeURIComponent(period)
+      + '&approved_at='+ encodeURIComponent(new Date().toISOString())
+    );
+    show('state-approved');
+  }
+
+  function handleRevise() {
+    show('state-revision');
+    document.getElementById('revision-note').focus();
+  }
+
+  function handleSubmitRevision() {
+    var note = document.getElementById('revision-note').value.trim();
+    if (!note) {
+      document.getElementById('revision-note').style.borderColor = '#c05a30';
+      return;
+    }
+    fetch(WEBHOOK
+      + '?status=revision required'
+      + '&task_id='      + encodeURIComponent(taskId)
+      + '&employee='     + encodeURIComponent(employeeName)
+      + '&days='         + encodeURIComponent(days)
+      + '&period='       + encodeURIComponent(period)
+      + '&note='         + encodeURIComponent(note)
+      + '&submitted_at=' + encodeURIComponent(new Date().toISOString())
+    );
+    document.getElementById('state-revision').innerHTML =
+      '<div style="text-align:center;">' +
+      '<div class="status-badge badge-revision">Revision Requested</div>' +
+      '<p style="margin:16px 0 0;font-size:12px;color:#a0927c;">Your note has been sent successfully.</p>' +
+      '</div>';
+  }
+
+  function handleCancel() {
+    show('state-default');
+  }
+</script>
+
+</body>
+</html>
